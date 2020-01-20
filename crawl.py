@@ -15,11 +15,12 @@ def _crawl_namva_pages():
     while crawl:
         response = send_get_request(url.format(page_number))
         page_number += 1
-        page = json.loads(response.text)
-        if page['result']:
-            pages.append(namava.parse_page(page))
-        else:
-            crawl = False
+        if response.ok:
+            page = json.loads(response.text)
+            if page['result']:
+                pages.append(namava.parse_page(page))
+            else:
+                crawl = False
 
     return pages
 
@@ -31,8 +32,9 @@ def _crawl_namava_movies(pages):
     for page in pages:
         for movie_id in page:
             response = send_get_request(movie_url.format(movie_id))
-            movie_json = json.loads(response.text)
-            movies_data.append(namava.pars_movie(movie_json))
+            if response.ok:
+                movie_json = json.loads(response.text)
+                movies_data.append(namava.pars_movie(movie_json))
 
     return movies_data
 
