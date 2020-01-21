@@ -1,8 +1,4 @@
-import time
-
-import grequests
-
-from request import send_get_request
+from request import send_get_request, send_parallel_requests
 from decorators import exception_logger
 import filimo
 import namava
@@ -18,8 +14,7 @@ def _crawl_namva_pages():
     pages = list()
     while crawl:
         urls = [url.format(i) for i in range(1, page_number)]
-        rs = (grequests.get(u) for u in urls)
-        responses = grequests.map(rs)
+        responses = send_parallel_requests(urls)
         page_number += 100
         for response in responses:
             if response.ok:
@@ -39,8 +34,7 @@ def _crawl_namava_movies(pages):
         movie_urls = list()
         for movie_id in page:
             movie_urls.append(movie_url.format(movie_id))
-        rs = (grequests.get(u) for u in movie_urls)
-        responses = grequests.map(rs)
+        responses = send_parallel_requests(movie_urls)
         for response in responses:
             if response.ok:
                 movie_json = json.loads(response.text)
