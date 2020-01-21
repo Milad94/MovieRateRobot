@@ -3,4 +3,4 @@ from models.base import BaseModel
 
 
 class Movie(BaseModel):
-    name = CharField(max_length=25)
+    caption = CharField(max_length=25)

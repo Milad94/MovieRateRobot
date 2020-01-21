@@ -13,5 +13,5 @@ def parse_page(page_json):
 def pars_movie(movie_json):
     data = dict()
     data['caption'] = movie_json['result']['caption'].replace('\u200c', '')
-    data['hit'] = movie_json['result']['hit']
+    data['rate'] = movie_json['result']['hit']
     return data
