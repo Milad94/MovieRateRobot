@@ -1,6 +1,6 @@
 from peewee import MySQLDatabase
+from local_config import USERNAME, PASSWORD
 
-db = MySQLDatabase(database="MovieRateRobot", user='milad',
-                   passwd='V2c47mk7jd!', host='localhost',
+db = MySQLDatabase(database="MovieRateRobot", user=USERNAME,
+                   passwd=PASSWORD, host='localhost',
                    port=3306)
-
