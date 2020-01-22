@@ -16,5 +16,5 @@ PORT = 3306
 ```
 
 
-## Step :
+## Step 3:
 Run main.py
