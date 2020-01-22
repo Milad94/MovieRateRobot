@@ -4,4 +4,4 @@ from models.movie import Movie
 
 
 class Filimo(BaseVOD):
-    movie = ForeignKeyField(model=Movie, unique=True, backref='filimo')
+    movie = ForeignKeyField(model=Movie, backref='filimo')
