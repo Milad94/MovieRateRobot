@@ -5,7 +5,7 @@ Create a database in MySQL
 
 ## Step 2:
 
-create a local_config.py like this:
+Create a local_config.py like this:
 
 ```python
 USERNAME = ' Your DB username'
@@ -15,12 +15,6 @@ HOST = 'localhost'
 PORT = 3306
 ```
 
-## Step 3:
-in main.py uncomment these lines of code:
-```python
- # namava_data = crawl_namava()
- # db_handler.insert_movies(movies, site="Namava")
-```
 
-## Step 4:
-run main.py
+## Step :
+Run main.py
