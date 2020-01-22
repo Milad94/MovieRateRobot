@@ -16,7 +16,7 @@ PORT = 3306
 ```
 
 ## Step 3:
-in main.py un comment this line of codes:
+in main.py uncomment this line of codes:
 ```python
  # namava_data = crawl_namava()
  # db_handler.insert_movies(movies, site="Namava")
