@@ -1,6 +1,9 @@
-#Movie Rate Robot
+# Movie Rate Robot
 
-##Step 1:
+## Step 1:
+Create a database in MySQL
+
+## Step 2:
 
 create a local_config.py like this:
 
@@ -12,12 +15,12 @@ HOST = 'localhost'
 PORT = 3306
 ```
 
-##Step 2:
+## Step 3:
 in main.py un comment this line of codes:
 ```python
  # namava_data = crawl_namava()
  # db_handler.insert_movies(movies, site="Namava")
 ```
 
-##Step 3:
+## Step 4:
 run main.py
