@@ -1,4 +1,4 @@
-from config import db
+from factory import database_factory
 from decorators import exception_logger
 from models.filimo import Filimo
 from models.filmnet import FilmNet
@@ -10,7 +10,7 @@ from meta import Sinleton
 class DatabaseHandler(metaclass=Sinleton):
     @exception_logger
     def __init__(self):
-        self.db = db
+        self.db = database_factory()
         self.db.connect()
         self.db.create_tables([Movie, Filimo, Namava, FilmNet])
 
