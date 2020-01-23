@@ -1,6 +1,6 @@
 # Movie Rate Robot
 
-##Project descrption:
+## Project descrption:
 To see the description of this project visit [google doc](https://docs.google.com/document/d/1waeA6aBufEDCA4Qty2kNiiYDuxH-RxAoBA8ThovoWCw/edit)
 
 ## Step 1:
