@@ -4,10 +4,10 @@ from models.filimo import Filimo
 from models.filmnet import FilmNet
 from models.movie import Movie
 from models.namava import Namava
-from meta import Sinleton
+from meta import Singleton
 
 
-class DatabaseHandler(metaclass=Sinleton):
+class DatabaseHandler(metaclass=Singleton):
     @exception_logger
     def __init__(self):
         self.db = database_factory()
