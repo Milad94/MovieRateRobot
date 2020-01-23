@@ -1,18 +1,22 @@
 # Movie Rate Robot
 
 ## Step 1:
-Create a database in MySQL
+Create a database in MySQL or PostgresSQL
 
 ## Step 2:
 
 Create a local_config.py like this:
 
 ```python
-USERNAME = ' Your DB username'
-PASSWORD = 'Your DB password!'
-DATABASE_NAME = 'Your Database name'
-HOST = 'localhost'
-PORT = 3306
+ATABASE_CONFIG = {
+    'user': ' Your username',
+    'passwd': 'Your password',
+    'database_name': 'Your database name',
+    'host': 'localhost',
+    'port': 3306
+}
+DATABASE_TYPE = "[MYSQL or POSTGRESSQL]"
+
 ```
 
 

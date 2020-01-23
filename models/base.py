@@ -1,8 +1,7 @@
 from datetime import datetime
 
 from peewee import DateTimeField, Model, FloatField
-
-from config import db
+from factory import database_factory
 
 
 class BaseModel(Model):
@@ -10,7 +9,7 @@ class BaseModel(Model):
     modified_time = DateTimeField(default=datetime.now())
 
     class Meta:
-        database = db
+        database = database_factory()
 
     def save(self, force_insert=False, only=None):
         self.modified_time = datetime.now()
