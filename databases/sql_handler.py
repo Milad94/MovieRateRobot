@@ -1,18 +1,19 @@
-from factory import database_factory
+from databases.factory import database_factory
+from databases.handler_interface import DatabaseHandler
 from decorators import exception_logger
-from models.filimo import Filimo
-from models.filmnet import FilmNet
-from models.movie import Movie
-from models.namava import Namava
+
 from meta import Singleton
+from models.sql import Movie, Filimo, Namava, FilmNet
 
 
-class DatabaseHandler(metaclass=Singleton):
+class SQLDatabaseHandler(DatabaseHandler, metaclass=Singleton):
     @exception_logger
     def __init__(self):
         self.db = database_factory()
         self.db.connect()
-        self.db.create_tables([Movie, Filimo, Namava, FilmNet])
+        self.db.create_tables(
+            [Movie, Filimo, Namava,
+             FilmNet])
 
     @exception_logger
     def __save_movie(self, movie):
