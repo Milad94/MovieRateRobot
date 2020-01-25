@@ -2,11 +2,10 @@ from databases.factory import database_factory
 from databases.handler_interface import DatabaseHandler
 from decorators import exception_logger
 
-from meta import Singleton
 from models.sql import Movie, Filimo, Namava, FilmNet
 
 
-class SQLDatabaseHandler(DatabaseHandler, metaclass=Singleton):
+class SQLDatabaseHandler(DatabaseHandler):
     @exception_logger
     def __init__(self):
         self.db = database_factory()

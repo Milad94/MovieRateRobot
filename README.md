@@ -14,15 +14,15 @@ Create a local_config.py like this:
 SQL_DATABASE_CONFIG = {
     'user': ' Your username',
     'passwd': 'Your password',
-    'database_name': 'Your databases name',
+    'database': 'Your databases name',
     'host': 'localhost',
-    'port': 3306,
+    'port': 'port',
     
 }
 MONGO_DATABASE_CONFIG = {
     'db': 'Your database name'
 }
-DATABASE_TYPE = "[MYSQL or POSTGRESSQL or MONGODB]"
+DATABASE_TYPE = "MYSQL or POSTGRESSQL or MONGODB"
 
 ```
 
