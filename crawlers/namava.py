@@ -1,5 +1,4 @@
 import json
-import time
 
 from crawlers.interface import Crawler
 from decorators import exception_logger
@@ -17,10 +16,7 @@ class NamavaCrawler(Crawler):
         self.pages = list()
 
     def get_data(self):
-        start = time.time()
         self.__crawl()
-        end = time.time()
-        print(end-start)
         return self.movies_data
 
     @exception_logger

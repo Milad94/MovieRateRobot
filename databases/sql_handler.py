@@ -15,40 +15,30 @@ class SQLDatabaseHandler(DatabaseHandler):
              FilmNet])
 
     @exception_logger
-    def __save_movie(self, movie):
+    def insert_movies(self, movies, site):
+        for movie in movies:
+            movie_record = self.select_movie(movie)
+            if movie_record:
+                instance = eval(site).create(rate=movie['rate'],
+                                             movie=self.select_movie(
+                                                 movie))
+            else:
+                movie_instance = self.__insert_movie_caption(movie)
+                movie_instance.save()
+                instance = eval(site).create(rate=movie['rate'],
+                                             movie=movie_instance)
+            instance.save()
+
+    @exception_logger
+    def __insert_movie_caption(self, movie):
         movie_instance = Movie.create(caption=movie['caption'])
         movie_instance.save()
         return movie_instance
 
     @exception_logger
-    def __insert_if_not_exist(self, movie, site):
-        movie_instance = self.__save_movie(movie)
-        return eval(site).create(rate=movie['rate'],
-                                 movie=movie_instance)
-
-    @exception_logger
-    def __insert_if_exist(self, movie, site):
-        return eval(site).create(rate=movie['rate'],
-                                 movie=self.get_movie_from_db_if_exist(
-                                     movie))
-
-    @exception_logger
-    def insert_movies(self, movies, site):
-        for movie in movies:
-            instance = self.save_movie_in_db(
-                self.get_movie_from_db_if_exist(movie))
-            instance(movie, site).save()
-
-    @exception_logger
-    def get_movie_from_db_if_exist(self, movie):
+    def select_movie(self, movie):
         try:
             record = Movie.get(Movie.caption == movie['caption'])
         except:
             return False
         return record
-
-    @exception_logger
-    def save_movie_in_db(self, is_exist):
-        if bool(is_exist):
-            return self.__insert_if_exist
-        return self.__insert_if_not_exist
