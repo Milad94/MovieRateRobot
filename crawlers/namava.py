@@ -51,10 +51,6 @@ class NamavaCrawler(Crawler):
     @exception_logger
     def __crawl_movies(self, pages):
         urls = [self.movie_url.format(movie_id) for movie_id in pages]
-        # urls_queue = Queue()
-        # for page in pages:
-        #     for movie_id in page:
-        #         urls_queue.put(self.movie_url.format(movie_id))
         responses = Request.get(urls)
         self.__extract_movie_in_page(responses)
 
