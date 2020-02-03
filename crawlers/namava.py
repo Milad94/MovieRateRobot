@@ -3,7 +3,6 @@ import json
 from crawlers.interface import Crawler
 from decorators import exception_logger
 from request import Request
-from queue import Queue
 
 
 class NamavaCrawler(Crawler):
