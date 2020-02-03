@@ -28,10 +28,8 @@ class NamavaCrawler(Crawler):
     def __crawl_pages(self):
         page_number = 100
         while self.crawl:
-            urls_queue = Queue()
-            for i in range(1, page_number):
-                urls_queue.put(self.page_url.format(i))
-            responses = Request.get(urls_queue)
+            urls = [self.page_url.format(i) for i in range(1, page_number)]
+            responses = Request.get(urls)
             page_number += 100
             self.__extract_pages(responses)
         return self.pages
@@ -53,11 +51,12 @@ class NamavaCrawler(Crawler):
 
     @exception_logger
     def __crawl_movies(self, pages):
-        urls_queue = Queue()
-        for page in pages:
-            for movie_id in page:
-                urls_queue.put(self.movie_url.format(movie_id))
-        responses = Request.get(urls_queue)
+        urls = [self.movie_url.format(movie_id) for movie_id in pages]
+        # urls_queue = Queue()
+        # for page in pages:
+        #     for movie_id in page:
+        #         urls_queue.put(self.movie_url.format(movie_id))
+        responses = Request.get(urls)
         self.__extract_movie_in_page(responses)
 
     def __extract_movie_in_page(self, responses):

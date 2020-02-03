@@ -4,10 +4,15 @@ import requests
 
 from decorators import exception_logger
 
+from queue import Queue
+
 
 class Request:
     @staticmethod
-    def get(urls_queue):
+    def get(urls):
+        urls_queue = Queue()
+        for url in urls:
+            urls_queue.put(url)
         responses = list()
         threads = list()
         for i in range(35):
